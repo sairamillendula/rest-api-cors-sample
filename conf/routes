@@ -8,4 +8,5 @@ GET     /listCards                  controllers.Application.listCards
 GET     /signature                  controllers.Application.signature
 
 # Map static resources from the /public folder to the /assets URL path
+GET     /*file                      controllers.Assets.at(path="/public", file)
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
