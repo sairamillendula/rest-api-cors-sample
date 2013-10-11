@@ -54,6 +54,6 @@ object Application extends Controller {
   }
 
   def index = Action {
-    Ok("Hello Heroku!")
+    Redirect("/index.html")
   }
 }

@@ -1,0 +1,144 @@
+<html ng-app>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="stylesheets/bootstrap.min.css" rel="stylesheet" media="screen"></head>
+<body>
+  <div class="container">
+    <h2>Demo Website: Zuora CORS REST API</h2>
+    <hr></div>
+
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="container" ng-controller="CardCtrl">
+          <div class="row-fluid">
+            <span class="label label-success">
+              <h3>
+                Credit Card Form&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </h3>
+            </span>
+          </div>
+          <div class="row-fluid">&nbsp;</div>
+          <div class="row-fluid">
+            <form id="cc_form" class="form-vertical">
+
+              <div class="control-group">
+                <label for="accountKey" >Account Key:</label>
+                <div class="controls">
+                  <input type="input" name="accountKey" id="accountKey" placeholder="{{default.accountKey}}" ng-model="accountKey">
+                  <label class="text-error" id="accountKeyMsg"></label>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label for="creditCardType">Credit Card Type:</label>
+                <div class="controls">
+                  <input type="text" name="creditCardType" id="creditCardType" placeholder="{{default.creditCardType}}" ng-model="creditCardType">
+                  <label class="text-error" id="creditCardTypeMsg"></label>
+                </div>
+              </div>
+              <div class="control-group">
+                <label  for="creditCardNumber">Credit Card Number:</label>
+                <div class="controls">
+                  <input type="text" name="creditCardNumber" id="creditCardNumber" placeholder="{{default.creditCardNumber}}" ng-model="creditCardNumber">
+                  <label class="text-error" id="creditCardNumberMsg"></label>
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="expirationMonth">Expiration Month:</label>
+                <div class="controls">
+                  <select name="expirationMonth" id="expirationMonth" ng-model="expirationMonth">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <label class="text-error" id="expirationMonthMsg"></label>
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="expirationYear" >Expiration Year:</label>
+                <div class="controls">
+                  <select name="expirationYear" id="expirationYear" ng-model="expirationYear">
+                    <option value="2013">2013</option>
+                    <option value="2014" selected>2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                  </select>
+                  <label class="text-error" id="expirationYearMsg"></label>
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="securityCode">Security Code:</label>
+                <div class="controls">
+                  <input type="text" name="securityCode" id="securityCode" placeholder="{{default.securityCode}}" ng-model="securityCode">
+                  <label class="text-error" id="securityCodeMsg"></label>
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="defaultPaymentMethod" >Default?:</label>
+                <div class="controls">
+                  <input type="text" name="defaultPaymentMethod" id="defaultPaymentMethod" placeholder="{{default.defaultPaymentMethod}}" ng-model="defaultPaymentMethod">
+                  <label class="text-error" id="defaultPaymentMethodMsg"></label>
+                </div>
+
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <input class="btn" type="button" name="submit" value="call zuora" onclick="javascript: generateSignature(makeCorsRequest);"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="container">
+          <div class="row-fluid">
+            <span class="label label-info">
+              <label onclick="javascript: showCards();">
+                <h3>Customer: A00000001's Credit Cards</h3>
+              </label>
+            </span>
+          </div>
+          <div class="row-fluid">&nbsp;</div>
+          <div class="row-fluid">
+            <div class="span6">
+              <pre id="cardList"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+  <footer class="footer">
+    <div class="container">
+      <h4>Response content from Zuora:</h4>
+      <div id="status" class="error" ></div>
+    </div>
+  </footer>
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="javascripts/bootstrap.min.js"></script>
+  <script type="text/javascript" src="javascripts/cors.js"></script>
+  <script type="text/javascript" src="javascripts/card.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+</body>
+</html>
