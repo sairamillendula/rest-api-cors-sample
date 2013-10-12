@@ -12,7 +12,7 @@ import models._
 
 object Application extends Controller {
   private val config = ConfigFactory.load()
-  private val zapi = config.getConfig("zapi").withFallback(config)
+  private val zapi = config.getConfig("zapi.sandbox").withFallback(config)
   private val schema = zapi.getString("schema")
   private val port = zapi.getInt("port")
 
@@ -41,7 +41,7 @@ object Application extends Controller {
           {
             "uri": "$zuoraApiBaseURL/v1/payment-methods/credit-cards",
             "method": "POST",
-            "accountKey": "${account.zNumber}}"
+            "accountKey": "${account.zNumber}"
           }
           """)
       }

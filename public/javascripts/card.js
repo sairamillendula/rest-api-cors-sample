@@ -1,18 +1,25 @@
-function CardCtrl($scope) {
+var corsDemoApp = angular.module('corsDemoApp', []);
 
-	$scope.card = {
+corsDemoApp.controller('CardCtrl', function CardCtrl($scope, $http) {
+
+
+  $scope.card = {
     "accountId": 1,
-		"accountKey": "A00000001",
-		"creditCardType": "Visa",
-		"creditCardNumber": "4111111111111111",
-		"expirationMonth": "10",
-		"expirationYear": "2015",
-		"securityCode": "111",
-		"defaultPaymentMethod": true
-	};
+    "accountKey": "A00000001",
+    "creditCardType": "Visa",
+    "creditCardNumber": "4111111111111111",
+    "expirationMonth": "10",
+    "expirationYear": "2015",
+    "securityCode": "111",
+    "defaultPaymentMethod": true
+  };
 
   $scope.years = ["2013", "2014", "2015", "2016", "2017", "2018", "2019"];
   $scope.monthes = ["1","2","3","4","5","6","7","8","9","10","11","12"];
+
+  $http.get('/listCards/' + $scope.card.accountId).success(function(data){
+    $scope.cardList = data.creditCards;
+  });
 
   $scope.makeCorsRequest = function() {
     generateSignature($scope.card.accountId, callZuora);
@@ -29,7 +36,8 @@ function CardCtrl($scope) {
       type: 'POST',
       
       url: 'https://apisandbox-api.zuora.com/rest/v1/payment-methods/credit-cards',
-      
+      //url: 'http://localhost:8080/apps/v1/payment-methods/credit-cards',
+
       contentType: "application/json",
 
       dataType: 'json',
@@ -46,7 +54,14 @@ function CardCtrl($scope) {
       data: JSON.stringify(cloneCard($scope.card)),
 
       success: function(data) {
-        showError(JSON.stringify(data));
+        if (data.success) {
+          // refresh card list
+          $http.get('/listCards/' + $scope.card.accountId).success(function(data){
+            $scope.cardList = data.creditCards;
+          });
+        }else {
+          showError(JSON.stringify(data));          
+        }
       },
 
       error: function() {
@@ -72,4 +87,5 @@ function CardCtrl($scope) {
   function showError(msg){
     alert(msg);
   };
-}
+});
+
