@@ -4,8 +4,8 @@
 
 # Home page
 GET     /                           controllers.Application.index
-GET     /listCards                  controllers.Application.listCards
-GET     /signature                  controllers.Application.signature
+GET     /listCards/:id              controllers.Application.listCards(id: Long)
+GET     /signature/:id              controllers.Application.signature(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file                      controllers.Assets.at(path="/public", file)

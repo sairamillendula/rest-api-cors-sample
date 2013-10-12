@@ -20,88 +20,62 @@
           </div>
           <div class="row-fluid">&nbsp;</div>
           <div class="row-fluid">
-            <form id="cc_form" class="form-vertical">
+            <form id="cc_form" class="form-vertical" ng-submit="makeCorsRequest()">
 
               <div class="control-group">
-                <label for="accountKey" >Account Key:</label>
+                <label for="accountId" >Account Internal Id:</label>
                 <div class="controls">
-                  <input type="input" name="accountKey" id="accountKey" placeholder="{{default.accountKey}}" ng-model="accountKey">
-                  <label class="text-error" id="accountKeyMsg"></label>
+                  <input type="input" name="accountId" id="accountId" placeholder="{{card.accountId}}" ng-model="card.accountId">
+                  <label class="text-error" id="accountIdMsg"></label>
                 </div>
               </div>
 
               <div class="control-group">
                 <label for="creditCardType">Credit Card Type:</label>
                 <div class="controls">
-                  <input type="text" name="creditCardType" id="creditCardType" placeholder="{{default.creditCardType}}" ng-model="creditCardType">
+                  <input type="text" name="creditCardType" id="creditCardType" placeholder="{{card.creditCardType}}" ng-model="card.creditCardType">
                   <label class="text-error" id="creditCardTypeMsg"></label>
                 </div>
               </div>
               <div class="control-group">
                 <label  for="creditCardNumber">Credit Card Number:</label>
                 <div class="controls">
-                  <input type="text" name="creditCardNumber" id="creditCardNumber" placeholder="{{default.creditCardNumber}}" ng-model="creditCardNumber">
+                  <input type="text" name="creditCardNumber" id="creditCardNumber" placeholder="{{card.creditCardNumber}}" ng-model="card.creditCardNumber">
                   <label class="text-error" id="creditCardNumberMsg"></label>
                 </div>
               </div>
               <div class="control-group">
                 <label for="expirationMonth">Expiration Month:</label>
                 <div class="controls">
-                  <select name="expirationMonth" id="expirationMonth" ng-model="expirationMonth">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
+                  <select name="expirationMonth" id="expirationMonth" ng-model="card.expirationMonth" ng-options="m for m in monthes">></select>
                   <label class="text-error" id="expirationMonthMsg"></label>
                 </div>
               </div>
               <div class="control-group">
                 <label for="expirationYear" >Expiration Year:</label>
                 <div class="controls">
-                  <select name="expirationYear" id="expirationYear" ng-model="expirationYear">
-                    <option value="2013">2013</option>
-                    <option value="2014" selected>2014</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                  </select>
+                  <select name="expirationYear" id="expirationYear" ng-model="card.expirationYear" ng-options="y for y in years"></select>
                   <label class="text-error" id="expirationYearMsg"></label>
                 </div>
               </div>
               <div class="control-group">
                 <label for="securityCode">Security Code:</label>
                 <div class="controls">
-                  <input type="text" name="securityCode" id="securityCode" placeholder="{{default.securityCode}}" ng-model="securityCode">
+                  <input type="text" name="securityCode" id="securityCode" placeholder="{{card.securityCode}}" ng-model="card.securityCode">
                   <label class="text-error" id="securityCodeMsg"></label>
                 </div>
               </div>
               <div class="control-group">
                 <label for="defaultPaymentMethod" >Default?:</label>
                 <div class="controls">
-                  <input type="text" name="defaultPaymentMethod" id="defaultPaymentMethod" placeholder="{{default.defaultPaymentMethod}}" ng-model="defaultPaymentMethod">
+                  <input type="text" name="defaultPaymentMethod" id="defaultPaymentMethod" placeholder="{{card.defaultPaymentMethod}}" ng-model="card.defaultPaymentMethod">
                   <label class="text-error" id="defaultPaymentMethodMsg"></label>
                 </div>
 
               </div>
               <div class="control-group">
                 <div class="controls">
-                  <input class="btn" type="button" name="submit" value="call zuora" onclick="javascript: generateSignature(makeCorsRequest);"></div>
+                  <input class="btn" type="submit" name="submit" value="call zuora"></div>
               </div>
             </form>
           </div>
@@ -137,7 +111,6 @@
   </footer>
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="javascripts/bootstrap.min.js"></script>
-  <script type="text/javascript" src="javascripts/cors.js"></script>
   <script type="text/javascript" src="javascripts/card.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 </body>
