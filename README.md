@@ -10,9 +10,11 @@ The server side is using `Scala` + `Play`, implemented two services:
 * create signature and token which are used by CORS
 * list all credit cards of sample account.
 
-The client is implemented with AngularJs, JQuery and Bootstrap, the assets are located in `public` folder.
+The client is implemented with AngularJs, JQuery and Bootstrap, the assets are located in `/public` folder.
 
-The sample is also running on Heroku[http://zuora-cors-demo.herokuapp.com].
+The sample is also running on [Heroku](http://zuora-cors-demo.herokuapp.com "Heroku").
+
+For more details, please visit [Zuora Knowledge Center](http://knowledgecenter.zuora.com/D_Zuora_APIs/REST_API/A_REST_basics/G_CORS_REST)
 
 Prerequisites
 -------------
@@ -27,4 +29,4 @@ After `scala` and `play` are installed, in application root directory:
 
 > play run
 
-Then, open your browser and access `http://localhost:9000` 
+Then, open your browser and access http://localhost:9000. 
