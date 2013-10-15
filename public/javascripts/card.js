@@ -22,6 +22,10 @@ corsDemoApp.controller('CardCtrl', function CardCtrl($scope, $http) {
   });
 
   $scope.makeCorsRequest = function() {
+    // clear error message
+    for (var i = 1; i<= 7; i++) 
+      $('#field_' + i + '_error')[0].innerHTML = "";
+
     generateSignature($scope.card.accountId, callZuora);
   };
 
@@ -60,7 +64,13 @@ corsDemoApp.controller('CardCtrl', function CardCtrl($scope, $http) {
             $scope.cardList = data.creditCards;
           });
         }else {
-          showError(JSON.stringify(data));          
+          // Error handling
+          for (var rIdx in data.reasons) {
+            var reason = data.reasons[rIdx];
+            var fieldCode = Math.floor(reason.code / 100) % 100;
+            $('#field_' + fieldCode + '_error')[0].innerHTML = reason.message;
+          }
+          // showError(JSON.stringify(data));          
         }
       },
 

@@ -34,7 +34,7 @@
             <label for="accountKey" >Account Number:</label>
             <div class="controls">
               <input type="input" name="accountKey" id="accountKey" placeholder="{{card.accountKey}}" ng-model="card.accountKey">
-              <label class="text-error" id="accountKeyMsg"></label>
+              <label class="text-error" id="field_1_error"></label>
             </div>
           </div>
 
@@ -42,42 +42,42 @@
             <label for="creditCardType">Credit Card Type:</label>
             <div class="controls">
               <input type="text" name="creditCardType" id="creditCardType" placeholder="{{card.creditCardType}}" ng-model="card.creditCardType">
-              <label class="text-error" id="creditCardTypeMsg"></label>
+              <label class="text-error" id="field_2_error"></label>
             </div>
           </div>
           <div class="control-group">
             <label  for="creditCardNumber">Credit Card Number:</label>
             <div class="controls">
               <input type="text" name="creditCardNumber" id="creditCardNumber" placeholder="{{card.creditCardNumber}}" ng-model="card.creditCardNumber">
-              <label class="text-error" id="creditCardNumberMsg"></label>
+              <label class="text-error" id="field_3_error"></label>
             </div>
           </div>
           <div class="control-group">
             <label for="expirationMonth">Expiration Month:</label>
             <div class="controls">
               <select name="expirationMonth" id="expirationMonth" ng-model="card.expirationMonth" ng-options="m for m in monthes">></select>
-              <label class="text-error" id="expirationMonthMsg"></label>
+              <label class="text-error" id="field_4_error"></label>
             </div>
           </div>
           <div class="control-group">
             <label for="expirationYear" >Expiration Year:</label>
             <div class="controls">
               <select name="expirationYear" id="expirationYear" ng-model="card.expirationYear" ng-options="y for y in years"></select>
-              <label class="text-error" id="expirationYearMsg"></label>
+              <label class="text-error" id="field_5_error"></label>
             </div>
           </div>
           <div class="control-group">
             <label for="securityCode">Security Code:</label>
             <div class="controls">
               <input type="text" name="securityCode" id="securityCode" placeholder="{{card.securityCode}}" ng-model="card.securityCode">
-              <label class="text-error" id="securityCodeMsg"></label>
+              <label class="text-error" id="field_6_error"></label>
             </div>
           </div>
           <div class="control-group">
             <label for="defaultPaymentMethod" >Default?:</label>
             <div class="controls">
               <input type="text" name="defaultPaymentMethod" id="defaultPaymentMethod" placeholder="{{card.defaultPaymentMethod}}" ng-model="card.defaultPaymentMethod">
-              <label class="text-error" id="defaultPaymentMethodMsg"></label>
+              <label class="text-error" id="field_7_error"></label>
             </div>
 
           </div>
