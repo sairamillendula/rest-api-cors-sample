@@ -6,7 +6,7 @@ corsDemoApp.controller('CardCtrl', function CardCtrl($scope, $http) {
   $scope.card = {
     "accountId": 1,
     "accountKey": "A00000001",
-    "creditCardType": "Visa",
+    "creditCardType": "Visa1",  // set an invalid value on purpose to show the error handling.
     "creditCardNumber": "4111111111111111",
     "expirationMonth": "10",
     "expirationYear": "2015",
